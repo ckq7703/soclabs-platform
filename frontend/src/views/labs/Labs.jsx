@@ -92,9 +92,18 @@ const Labs = () => {
                         <span className="lab-clearance">CLEARANCE: LEVEL {Math.floor(Math.random() * 3) + 1}</span>
                       </div>
                     )}
-                    <div className="lab-card-badge">{course.category || 'ACADEMY'}</div>
-                    <div className={`lab-enroll-badge ${course.is_enrolled ? 'active' : 'available'}`}>
-                      {course.is_enrolled ? 'ACTIVE' : 'AVAILABLE'}
+                    <div className={`lab-enroll-badge ${
+                      course.published === false 
+                        ? 'expired' 
+                        : course.is_enrolled 
+                          ? 'active' 
+                          : 'available'
+                    }`}>
+                      {course.published === false 
+                        ? (course.is_enrolled ? 'HẾT HẠN' : 'CHƯA MỞ') 
+                        : course.is_enrolled 
+                          ? 'ĐANG HỌC' 
+                          : 'SẴN SÀNG'}
                     </div>
                   </div>
                   
@@ -124,8 +133,18 @@ const Labs = () => {
                         <FlaskConical size={14} />
                         <span>{course.modules?.reduce((acc, m) => acc + (m.labs?.length || 0), 0)} Labs</span>
                       </div>
-                      <div className={`lab-explore-action ${course.is_enrolled ? 'action-enrolled' : 'action-explore'}`}>
-                        {course.is_enrolled ? 'GO TO LAB' : 'ENROLL NOW'} <ArrowRight size={14} />
+                      <div className={`lab-explore-action ${
+                        course.published === false 
+                          ? 'action-expired' 
+                          : course.is_enrolled 
+                            ? 'action-enrolled' 
+                            : 'action-explore'
+                      }`}>
+                        {course.published === false 
+                          ? (course.is_enrolled ? 'KHÓA HỌC ĐÃ HẾT HẠN' : 'KHÓA HỌC CHƯA MỞ') 
+                          : course.is_enrolled 
+                            ? 'VÀO HỌC' 
+                            : 'ĐĂNG KÝ NGAY'} <ArrowRight size={14} />
                       </div>
                     </div>
                   </div>

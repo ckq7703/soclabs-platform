@@ -107,17 +107,30 @@ const CourseDetails = () => {
             </div>
 
             <div className="lab-hero-actions" style={{ marginTop: '24px' }}>
-              {!isEnrolled ? (
+              {course.published === false ? (
+                isEnrolled ? (
+                  <div className="lab-enrolled-status-badge lab-expired-badge">
+                    <Lock size={18} /> <span>KHÓA HỌC ĐÃ HẾT HẠN</span>
+                  </div>
+                ) : (
+                  <button 
+                    className="lab-enroll-premium-btn lab-unpublished-btn" 
+                    disabled={true}
+                  >
+                    KHÓA HỌC CHƯA MỞ
+                  </button>
+                )
+              ) : !isEnrolled ? (
                 <button 
                   className="lab-enroll-premium-btn" 
                   onClick={handleEnroll} 
                   disabled={enrolling}
                 >
-                  {enrolling ? 'ENROLLING...' : 'ENROLL MISSION NOW'}
+                  {enrolling ? 'ĐANG ĐĂNG KÝ...' : 'ĐĂNG KÝ HỌC NGAY'}
                 </button>
               ) : (
                 <div className="lab-enrolled-status-badge">
-                  <ShieldCheck size={18} /> <span>ENROLLED & ACTIVE</span>
+                  <ShieldCheck size={18} /> <span>ĐÃ ĐĂNG KÝ & SẴN SÀNG</span>
                 </div>
               )}
             </div>
@@ -172,6 +185,10 @@ const CourseDetails = () => {
                         {!isEnrolled ? (
                           <button className="lab-launch-btn lab-locked" disabled>
                             LOCKED <Lock size={16} />
+                          </button>
+                        ) : course.published === false ? (
+                          <button className="lab-launch-btn lab-locked" disabled>
+                            EXPIRED <Lock size={16} />
                           </button>
                         ) : lab.active_session_id ? (
                           <button 

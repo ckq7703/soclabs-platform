@@ -277,3 +277,13 @@
   .lab-page-header { flex-direction: column; align-items: flex-start; gap: 24px; }
   .lab-search { width: 100%; }
 }
+
+.lab-enroll-badge.expired {
+  background: #64748b;
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lab-explore-action.action-expired {
+  color: #64748b;
+}

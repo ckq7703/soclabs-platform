@@ -462,3 +462,17 @@
     display: none;
   }
 }
+
+/* Stale / Unpublished / Expired states */
+.lab-enroll-premium-btn.lab-unpublished-btn {
+  background: #64748b;
+  color: #f1f5f9;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.lab-enrolled-status-badge.lab-expired-badge {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}

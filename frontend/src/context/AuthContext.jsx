@@ -7,6 +7,24 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const clearCookies = () => {
+    const cookiesToClear = ['lab_access_token', 'guac_user'];
+    cookiesToClear.forEach(name => {
+      // 1. Clear with default path and domain
+      document.cookie = `${name}=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+      
+      // 2. Clear with current domain explicitly
+      document.cookie = `${name}=; path=/; domain=${window.location.hostname}; expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+      
+      // 3. Clear with parent domain (e.g. .smartpro.com.vn if hostname is soc.smartpro.com.vn)
+      const hostParts = window.location.hostname.split('.');
+      if (hostParts.length >= 2) {
+        const parentDomain = `.${hostParts.slice(-2).join('.')}`;
+        document.cookie = `${name}=; path=/; domain=${parentDomain}; expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+      }
+    });
+  };
+
   const fetchUser = async () => {
     try {
       const response = await api.get('/auth/user/');
@@ -17,8 +35,7 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       localStorage.removeItem('lab_access_token');
       localStorage.removeItem('lab_refresh_token');
-      document.cookie = "lab_access_token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT";
-      document.cookie = "guac_user=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT";
+      clearCookies();
     } finally {
       setLoading(false);
     }
@@ -71,8 +88,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('lab_access_token');
     localStorage.removeItem('lab_refresh_token');
-    document.cookie = "lab_access_token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT";
-    document.cookie = "guac_user=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT";
+    clearCookies();
     setUser(null);
   };
 
