@@ -1,0 +1,333 @@
+/* ─── Root Layout ────────────────────────────────────────────── */
+.lab-login-root {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  /* Offset the main-content padding from App layout */
+  margin: -2rem -3rem;
+  width: calc(100% + 6rem);
+}
+
+/* ─── Left Panel: Form ───────────────────────────────────────── */
+.lab-login-form-panel {
+  width: 480px;
+  flex-shrink: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 2;
+}
+
+.lab-login-form-inner {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Brand / Logo */
+.lab-login-brand {
+  margin-bottom: 36px;
+}
+
+.lab-login-logo-img {
+  height: 44px;
+  width: auto;
+}
+
+/* Heading */
+.lab-login-heading {
+  margin-bottom: 28px;
+}
+
+.lab-login-heading h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.lab-login-heading p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Error Banner */
+.lab-login-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.lab-login-error svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Form */
+.lab-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.lab-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lab-form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.lab-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.lab-input-icon {
+  position: absolute;
+  left: 14px;
+  color: #9ca3af;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.lab-input-wrapper input {
+  width: 100%;
+  padding: 12px 44px 12px 42px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #1e293b;
+  background: #f8fafc;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.lab-input-wrapper input:focus {
+  border-color: #f97316;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.lab-input-wrapper input::placeholder {
+  color: #c0ccd8;
+}
+
+.lab-toggle-pw {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.lab-toggle-pw:hover {
+  color: #475569;
+}
+
+/* Submit Button */
+.lab-login-btn {
+  margin-top: 4px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+  font-family: inherit;
+}
+
+.lab-login-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.45);
+}
+
+.lab-login-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.lab-btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: lab-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes lab-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Footer note */
+.lab-login-note {
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ─── Right Panel: Visual ────────────────────────────────────── */
+.lab-login-visual-panel {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lab-login-visual-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.lab-login-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 41, 59, 0.80) 100%);
+  z-index: 1;
+}
+
+.lab-login-visual-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  padding: 48px;
+  max-width: 520px;
+}
+
+.lab-visual-badge {
+  display: inline-block;
+  background: rgba(249, 115, 22, 0.2);
+  border: 1px solid rgba(249, 115, 22, 0.5);
+  color: #fb923c;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 6px 16px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+}
+
+.lab-login-visual-content h2 {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.lab-login-visual-content p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.lab-visual-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px 32px;
+  backdrop-filter: blur(8px);
+}
+
+.lab-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 28px;
+}
+
+.lab-stat-num {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fb923c;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.lab-stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+}
+
+.lab-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .lab-login-root {
+    flex-direction: column;
+    margin: -2rem -3rem;
+    width: calc(100% + 6rem);
+  }
+
+  .lab-login-form-panel {
+    width: 100%;
+    min-height: 100vh;
+    box-shadow: none;
+  }
+
+  .lab-login-visual-panel {
+    display: none;
+  }
+}

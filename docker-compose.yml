@@ -1,0 +1,117 @@
+version: '3.8'
+
+services:
+  # Redis for job queue
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - recon-network
+    restart: unless-stopped
+
+  # PostgreSQL for metadata and results
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: recon
+      POSTGRES_USER: recon
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - recon-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U recon"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # API Gateway
+  api-gateway:
+    build: ./gateway
+    ports:
+      - "8080:8080"
+    environment:
+      REDIS_HOST: redis
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: recon
+      POSTGRES_USER: recon
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      API_KEY: ${API_KEY}
+      APIVOID_API_KEY: ${APIVOID_API_KEY}
+      VIRUSTOTAL_API_KEY: ${VIRUSTOTAL_API_KEY}
+
+    depends_on:
+      redis:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+    networks:
+      - recon-network
+    restart: unless-stopped
+
+  # Worker containers
+  recon-worker:
+    build: ./worker
+    environment:
+      REDIS_HOST: redis
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: recon
+      POSTGRES_USER: recon
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      APIVOID_API_KEY: ${APIVOID_API_KEY}
+      VIRUSTOTAL_API_KEY: ${VIRUSTOTAL_API_KEY}
+
+    volumes:
+      - recon_results:/data/results
+    depends_on:
+      redis:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      api-gateway:
+        condition: service_started
+    networks:
+      - recon-network
+    restart: unless-stopped
+    deploy:
+      replicas: 20
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+  # ReactJS Web Interface
+  web:
+    build:
+      context: ./frontend
+      args:
+        - VITE_API_KEY=${API_KEY}
+    ports:
+
+      - "80:80"
+    environment:
+      VITE_API_URL: http://api-gateway:8080
+      VITE_API_KEY: ${API_KEY}
+    depends_on:
+      - api-gateway
+    networks:
+      - recon-network
+    restart: unless-stopped
+
+
+volumes:
+  redis_data:
+  postgres_data:
+  recon_results:
+
+networks:
+  recon-network:
+    driver: bridge

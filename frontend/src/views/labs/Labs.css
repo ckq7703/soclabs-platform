@@ -1,0 +1,279 @@
+.lab-page-root {
+  padding: 40px;
+  background-color: #fafafa;
+  min-height: 100vh;
+}
+
+.lab-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.lab-page-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.lab-page-subtitle {
+  color: #64748b;
+  font-size: 16px;
+}
+
+.lab-search {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0 16px;
+  width: 350px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.lab-search input {
+  border: none;
+  background: none;
+  padding: 14px;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  color: #1e293b;
+}
+
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 32px;
+}
+
+.lab-course-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.lab-course-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px -12px rgba(0,0,0,0.15);
+  border-color: #f97316;
+}
+
+.lab-card-visual {
+  height: 200px;
+  position: relative;
+  background: #0f172a;
+}
+
+.lab-card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.lab-card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: white;
+  gap: 12px;
+}
+
+.lab-clearance {
+  font-size: 10px;
+  font-family: monospace;
+  letter-spacing: 2px;
+  color: #f97316;
+  font-weight: 700;
+}
+
+.lab-card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #f97316;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.lab-card-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.lab-card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.lab-card-desc {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.lab-labs-preview {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  border: 1px solid #f1f5f9;
+}
+
+.lab-preview-label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.lab-preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lab-preview-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.lab-text-orange {
+  color: #f97316;
+}
+
+.lab-preview-more {
+  font-size: 12px;
+  color: #f97316;
+  font-weight: 700;
+  margin-top: 6px;
+  margin-left: 22px;
+}
+
+.lab-card-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lab-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.lab-explore-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #f97316;
+  letter-spacing: 0.5px;
+}
+
+.lab-explore-action.action-enrolled {
+  color: #10b981;
+}
+
+.lab-explore-action.action-explore {
+  color: #f97316;
+}
+
+.lab-enroll-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+.lab-enroll-badge.active {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.lab-enroll-badge.available {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lab-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+  gap: 20px;
+}
+
+.lab-loader {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #f1f5f9;
+  border-top-color: #f97316;
+  border-radius: 50%;
+  animation: lab-spin 1s linear infinite;
+}
+
+.lab-no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  color: #94a3b8;
+  text-align: center;
+}
+
+@keyframes lab-spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 768px) {
+  .lab-page-root { padding: 20px; }
+  .lab-page-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .lab-search { width: 100%; }
+}

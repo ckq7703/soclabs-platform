@@ -1,0 +1,229 @@
+{
+    "info": {
+        "name": "Recon Platform API",
+        "description": "API collection for testing the Recon Automation Platform",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/health",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "health"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Create Job - Subdomain Enum",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "X-API-Key",
+                        "value": "your-random-api-key-here-change-this"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"target\": \"example.com\",\n  \"scan_type\": \"subdomain\",\n  \"options\": {}\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/v1/jobs/create",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "v1",
+                        "jobs",
+                        "create"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Create Job - Technology Detection",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "X-API-Key",
+                        "value": "your-random-api-key-here-change-this"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"target\": \"https://example.com\",\n  \"scan_type\": \"tech_detect\",\n  \"options\": {\n    \"timeout\": 300\n  }\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/v1/jobs/create",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "v1",
+                        "jobs",
+                        "create"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Job Status",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-API-Key",
+                        "value": "your-random-api-key-here-change-this"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8080/api/v1/jobs/:job_id/status",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "v1",
+                        "jobs",
+                        ":job_id",
+                        "status"
+                    ],
+                    "variable": [
+                        {
+                            "key": "job_id",
+                            "value": "REPLACE_WITH_JOB_ID"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Job Results",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-API-Key",
+                        "value": "your-random-api-key-here-change-this"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8080/api/v1/jobs/:job_id/results",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "v1",
+                        "jobs",
+                        ":job_id",
+                        "results"
+                    ],
+                    "variable": [
+                        {
+                            "key": "job_id",
+                            "value": "REPLACE_WITH_JOB_ID"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "List Jobs",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-API-Key",
+                        "value": "your-random-api-key-here-change-this"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8080/api/v1/jobs?limit=10",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "v1",
+                        "jobs"
+                    ],
+                    "query": [
+                        {
+                            "key": "limit",
+                            "value": "10"
+                        },
+                        {
+                            "key": "status",
+                            "value": "completed",
+                            "disabled": true
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Cancel Job",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "X-API-Key",
+                        "value": "your-random-api-key-here-change-this"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8080/api/v1/jobs/:job_id",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "v1",
+                        "jobs",
+                        ":job_id"
+                    ],
+                    "variable": [
+                        {
+                            "key": "job_id",
+                            "value": "REPLACE_WITH_JOB_ID"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

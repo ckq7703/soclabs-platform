@@ -1,0 +1,464 @@
+.lab-course-details-root {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-height: 100vh;
+}
+
+.lab-course-header {
+  padding: 20px 40px;
+  background-color: white;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.lab-back-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.lab-back-nav:hover {
+  color: #0f172a;
+}
+
+.lab-course-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+  width: 100%;
+}
+
+/* Hero Banner */
+.lab-course-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8fafc;
+  border-radius: 24px;
+  padding: 48px;
+  margin-bottom: 48px;
+  border: 1px solid #e2e8f0;
+}
+
+.lab-hero-info {
+  flex: 1;
+  max-width: 700px;
+}
+
+.lab-mission-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #3b82f6;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.lab-course-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.lab-course-description {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.lab-course-stats {
+  display: flex;
+  gap: 24px;
+}
+
+.lab-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.lab-hero-visual {
+  width: 380px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.lab-hero-img-wrapper {
+  width: 320px;
+  height: 200px;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lab-hero-img-wrapper:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+.lab-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lab-abstract-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+}
+
+/* Main Layout */
+.lab-course-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+}
+
+.lab-section-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lab-section-title::after {
+  content: "";
+  height: 2px;
+  flex: 1;
+  background: linear-gradient(to right, #e2e8f0, transparent);
+}
+
+.lab-roadmap-module {
+  margin-bottom: 54px;
+}
+
+.lab-module-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+  border-left: 4px solid #f97316;
+  padding-left: 20px;
+}
+
+.lab-module-index {
+  font-size: 12px;
+  font-weight: 800;
+  color: #f97316;
+  letter-spacing: 1.5px;
+}
+
+.lab-module-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.lab-module-labs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lab-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  background-color: white;
+  border: 1px solid #eef2f6;
+  border-radius: 20px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.lab-entry:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.05);
+  transform: translateX(8px);
+}
+
+.lab-main-info {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex: 1;
+}
+
+.lab-thumbnail-wrapper {
+  width: 90px;
+  height: 90px;
+  background-color: #0f172a;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #f1f5f9;
+  transition: all 0.3s;
+  color: white;
+}
+
+.lab-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.lab-thumbnail-wrapper.lab-active {
+  border-color: #10b981;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+  animation: lab-pulse-green 2s infinite;
+}
+
+.lab-active-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 10px;
+  height: 10px;
+  background-color: #10b981;
+  border-radius: 50%;
+  border: 2px solid white;
+  z-index: 2;
+}
+
+@keyframes lab-pulse-green {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.lab-text {
+  flex: 1;
+}
+
+.lab-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.lab-excerpt {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.lab-attempts-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+.lab-launch-btn {
+  background-color: #0f172a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.lab-launch-btn:hover:not(:disabled) {
+  background-color: #1e293b;
+  transform: translateY(-2px);
+}
+
+.lab-launch-btn.lab-continue-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-color: #059669;
+}
+
+.lab-launch-btn.lab-continue-btn:hover {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.lab-launch-btn:disabled {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.lab-launch-btn.lab-locked {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.lab-enroll-premium-btn {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+}
+
+.lab-enroll-premium-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(249, 115, 22, 0.6);
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+}
+
+.lab-enroll-premium-btn:disabled {
+  background: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.lab-enrolled-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.lab-entry.lab-locked-blur {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.lab-entry.lab-locked-blur .lab-main-info {
+  filter: blur(2px);
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Sidebar Info */
+.lab-sidebar-card {
+  padding: 24px;
+  background-color: #f8fafc;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.lab-info-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.lab-info-card p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.lab-clearance-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+
+.lab-clearance-list li {
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lab-clearance-list li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #10b981;
+  border-radius: 50%;
+}
+
+.lab-loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  gap: 20px;
+  color: #64748b;
+}
+
+.lab-error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  text-align: center;
+}
+
+.lab-back-link {
+  margin-top: 20px;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .lab-course-main-layout {
+    grid-template-columns: 1fr;
+  }
+  .lab-course-hero {
+    padding: 32px;
+  }
+  .lab-hero-visual {
+    display: none;
+  }
+}

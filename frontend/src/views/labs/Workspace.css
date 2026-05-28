@@ -1,0 +1,480 @@
+.lab-workspace-root {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f8fafc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* 1. Tasks Sidebar */
+.lab-tasks-sidebar {
+  width: 320px;
+  background-color: white;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.lab-tasks-header {
+  padding: 24px 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.lab-sidebar-tag {
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 1px;
+}
+
+.lab-sidebar-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 4px;
+}
+
+.lab-tasks-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.lab-tasks-section-header {
+  padding: 12px 20px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+}
+
+.lab-tasks-progress-count {
+  color: #3b82f6;
+}
+
+.lab-tasks-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+}
+
+.lab-task-entry {
+  padding: 12px 20px;
+  border-bottom: 1px solid #f8fafc;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.lab-task-entry:hover {
+  background-color: #f1f5f9;
+}
+
+.lab-task-entry.lab-expanded {
+  background-color: #f8fafc;
+  border-left-color: #3b82f6;
+}
+
+.lab-task-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.lab-task-icon {
+  margin-top: 2px;
+  color: #cbd5e1;
+}
+
+.lab-text-green { color: #10b981; }
+
+.lab-task-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.4;
+}
+
+.lab-task-num {
+  color: #94a3b8;
+}
+
+.lab-task-expansion {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+}
+
+.lab-task-instruction {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.lab-task-action {
+  margin-top: 15px;
+}
+
+.lab-complete-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  color: #166534;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.lab-mcq-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lab-mcq-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lab-mcq-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.lab-mcq-option.lab-selected {
+  background-color: #eff6ff;
+  border-color: #3b82f6;
+}
+
+.lab-task-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lab-task-input-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+}
+
+.lab-submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #0f172a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Sidebar Footer */
+.lab-tasks-footer {
+  padding: 20px;
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.lab-footer-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.lab-footer-progress-bar {
+  height: 6px;
+  background-color: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.lab-progress-fill {
+  height: 100%;
+  background-color: #f97316;
+  transition: width 0.5s ease;
+}
+
+/* Main Content Area */
+.lab-workspace-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.lab-workspace-header {
+  height: 60px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.lab-header-left, .lab-header-center, .lab-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.lab-header-tag {
+  font-size: 9px;
+  font-weight: 800;
+  color: #3b82f6;
+  letter-spacing: 1.5px;
+}
+
+.lab-header-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.lab-header-divider {
+  width: 1px;
+  height: 24px;
+  background-color: #f1f5f9;
+  margin: 0 24px;
+}
+
+.lab-header-timer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ef4444;
+}
+
+.lab-mono {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lab-vm-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lab-selector-hint {
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
+}
+
+.lab-selector-rel {
+  position: relative;
+}
+
+.lab-selector-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 6px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.lab-vm-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.lab-vm-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.lab-vm-ip {
+  font-size: 10px;
+  font-weight: 600;
+  color: #3b82f6;
+  font-family: monospace;
+}
+
+.lab-vm-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 260px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 8px;
+  z-index: 100;
+}
+
+.lab-vm-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.lab-vm-item:hover { background-color: #f1f5f9; }
+.lab-vm-item.lab-active { background-color: #eff6ff; }
+
+.lab-vm-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #94a3b8;
+}
+
+.lab-vm-dot.lab-online {
+  background-color: #10b981;
+}
+
+.lab-vm-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.lab-vm-item-name { font-size: 13px; font-weight: 700; }
+.lab-vm-item-ip { font-size: 11px; font-family: monospace; }
+
+.lab-terminate-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.lab-workspace-viewport {
+  flex: 1;
+  background-color: #000;
+  position: relative;
+}
+
+.lab-vm-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lab-guac-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.lab-workspace-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+  background-color: white;
+}
+
+.lab-loader {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f1f5f9;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: lab-spin 1s linear infinite;
+}
+
+@keyframes lab-spin { to { transform: rotate(360deg); } }
+
+/* Guacamole iframe error state */
+.lab-guac-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  text-align: center;
+  padding: 40px;
+  gap: 12px;
+}
+
+.lab-guac-error-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+  opacity: 0.6;
+}
+
+.lab-guac-error h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.lab-guac-error p {
+  font-size: 13px;
+  color: #94a3b8;
+  max-width: 360px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.lab-guac-retry-btn {
+  margin-top: 8px;
+  padding: 10px 24px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.lab-guac-retry-btn:hover {
+  background-color: #2563eb;
+}
